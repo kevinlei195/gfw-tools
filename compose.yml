@@ -1,0 +1,14 @@
+services:
+  xray-mihomo-hysteria:
+    build: .
+    container_name: xray-mihomo-hysteria
+    restart: always
+    network_mode: host
+    volumes: 
+      -./app:/app
+    environment:
+      - TZ=Asia/Shanghai
+      - CONFIG_URL=URL_ADDRESS
+      - CONFIG_PATH=/app/xray.jsonc
+      - APP_PATH=/usr/local/bin/xray
+    command: run -c /app/xray.jsonc
